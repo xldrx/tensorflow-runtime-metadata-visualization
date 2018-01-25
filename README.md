@@ -6,7 +6,7 @@ Compare to built-in Chrome Tracing Format:
 * Separates network ops from computing
 * Faster Navigation
 
-Example timeling of Inception execution is available [here](http://htmlpreview.github.io/?https://github.com/xldrx/tensorflow-runtime-metadata-visualization/blob/master/example-inception-train-4w-1ps.html)
+Example: timeline of Inception execution is available [here](http://htmlpreview.github.io/?https://github.com/xldrx/tensorflow-runtime-metadata-visualization/blob/master/example-inception-train-4w-1ps.html)
 ![Alt text](example-inception-train-4w-1ps.png?raw=true "Inception Timeline")
 
 ## How to use
@@ -34,3 +34,15 @@ with tf.train.MonitoredTrainingSession(...) as sess:
 ## Known Issues
 * Has been tested only on Python 3
 * Hover boxes may not be appropriately placed.
+
+## Cite this tool
+```latex
+@misc{Hashemi2018,
+  author = {Sayed Hadi Hashemi},
+  title = {TensorFlow Runtime Tracing Metadata Visualization},
+  year = {2018},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/xldrx/tensorflow-runtime-metadata-visualization}},
+}
+```
