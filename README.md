@@ -6,7 +6,7 @@ Compare to built-in Chrome Tracing Format:
 * Separates network ops from computing
 * Faster Navigation
 
-Example timeling of Inception execution is available [here](example-inception-train-4w-1ps.html)
+Example timeling of Inception execution is available [here](http://htmlpreview.github.io/?https://github.com/xldrx/tensorflow-runtime-metadata-visualization/blob/master/example-inception-train-4w-1ps.html)
 ![Alt text](example-inception-train-4w-1ps.png?raw=true "Inception Timeline")
 
 ## How to use
