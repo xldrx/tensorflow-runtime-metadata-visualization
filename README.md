@@ -24,9 +24,8 @@ tfvis.timeline_visualize(runtime_metadata, "example.html")
 with tf.train.MonitoredTrainingSession(...) as sess:
 	...
 	run_metadata = tf.RunMetadata()
-	sess.run(train, **timeline.kwargs())
 	options = tf.RunOptions(trace_level=tf.RunOptions.FULL_TRACE)
-	sess.run(train_op, run_metadata=self.run_metadata, options=self.options)
+	sess.run(train_op, run_metadata=run_metadata, options=options)
 ...
 
 ```
