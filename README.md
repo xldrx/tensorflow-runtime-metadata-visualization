@@ -10,14 +10,45 @@ Example: timeline of Inception execution is available [here](http://htmlpreview.
 ![Inception Timeline](example-inception-train-4w-1ps.png?raw=true "Inception Timeline")
 
 ## How to use
-Given a collected `runtime_metadata`:
+1. Collect Runtime metadata in TensorFlow:
+    ```python
+    from tfvis import Timeline
+    ...
+    
+    with tf.train.MonitoredTrainingSession(...) as sess:
+        ...
+        with Timeline() as timeline:
+            sess.run(train_op, **timeline.kwargs)
+        ...
+    ```
+2. Visualize:
+    ```python
+    ...
+    timeline.visualize("example.html")
+    ...
+    ```
+
+## Frequently Asked Questions
+### `Horovod` Support?
+Pass `horovod=True` to `Timeline`:
 ```python
-import tfvis
-...
-tfvis.timeline_visualize(runtime_metadata, "example.html")
+with Timeline(horovod=True) as timeline:
+        sess.run(train_op, **timeline.kwargs)
 ```
 
-## How to Collect Runtime Metadata in TensorFlow
+### Save for later?
+Use this:
+```python
+with Timeline(horovod=True) as timeline:
+        sess.run(train_op, **timeline.kwargs)
+        
+timeline.to_pickle("example.pickle")
+...
+timeline.from_pickle("example.pickle", horovod=True)
+```
+
+### Collect Runtime Metadata Natively?
+Use this:
 ```python
 ...
 
@@ -28,12 +59,21 @@ with tf.train.MonitoredTrainingSession(...) as sess:
 	options = tf.RunOptions(trace_level=tf.RunOptions.FULL_TRACE)
 	sess.run(train_op, run_metadata=self.run_metadata, options=self.options)
 ...
-
 ```
 
-## Known Issues
-* Has been tested only on Python 3
-* Hover boxes may not be appropriately placed.
+Store:
+```python
+import pickle
+
+with open("example.pickle", "wb") as fp:
+        pickle.load(run_metadata, fp)
+```
+
+Load and Visualize:
+```python
+    from tfvis import Timeline
+    Timeline.from_pickle("example.pickle").visualize("example.html")
+```
 
 ## Cite this tool
 ```latex
