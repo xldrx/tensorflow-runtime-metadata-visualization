@@ -47,7 +47,7 @@ timeline.to_pickle("example.pickle")
 timeline.from_pickle("example.pickle", horovod=True)
 ```
 
-### Python2
+### Python 2?
 It is supported experimentally, but has not been throughly tested. 
 
 ### Collect Runtime Metadata Natively?
