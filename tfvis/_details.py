@@ -1,6 +1,7 @@
 #! /usr/bin/env python3
 # coding=utf-8
 from __future__ import division
+from __future__ import unicode_literals
 from __future__ import with_statement
 from __future__ import absolute_import
 from io import open
@@ -9,6 +10,7 @@ import random
 import re
 from datetime import datetime
 
+import six
 from bokeh.embed import components
 from bokeh.layouts import gridplot
 from bokeh.models import ColumnDataSource, Range1d, SingleIntervalTicker, WidgetBox, \
@@ -49,8 +51,14 @@ class TimelineVisualizer:
         result = self._export_to_html(final_plot)
 
         if output_file:
-            with open(output_file, "w") as fp:
-                fp.write(result)
+            if six.PY2:
+                with open(output_file, "wb") as fp:
+                    fp.write(result.decode("utf-8").encode('utf-8'))
+            elif six.PY3:
+                with open(output_file, "w") as fp:
+                    fp.write(result)
+            else:
+                raise Exception("Unsupported Python Version")
         else:
             return result
 
