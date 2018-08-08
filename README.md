@@ -6,7 +6,7 @@ Compare to built-in Chrome Tracing Format:
 * Separates network ops from computing
 * Faster Navigation
 
-Example: timeline of Inception execution is available [here](http://htmlpreview.github.io/?https://github.com/xldrx/tensorflow-runtime-metadata-visualization/blob/master/example-inception-train-4w-1ps.html)
+Example: timeline of Inception execution is available [here](http://htmlpreview.github.io/?https://github.com/xldrx/tensorflow-runtime-metadata-visualization/blob/master/example-inception-train-4w-1ps.html).
 ![Inception Timeline](example-inception-train-4w-1ps.png?raw=true "Inception Timeline")
 
 ## How to use
@@ -36,7 +36,7 @@ with Timeline(horovod=True) as timeline:
         sess.run(train_op, **timeline.kwargs)
 ```
 
-### Save for later?
+### Save raw runtime data?
 Use this:
 ```python
 with Timeline(horovod=True) as timeline:
@@ -46,6 +46,9 @@ timeline.to_pickle("example.pickle")
 ...
 timeline.from_pickle("example.pickle", horovod=True)
 ```
+
+### Python2
+It is supported experimentally, but has not been throughly tested. 
 
 ### Collect Runtime Metadata Natively?
 Use this:
