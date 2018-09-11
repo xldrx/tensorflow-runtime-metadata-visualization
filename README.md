@@ -68,7 +68,7 @@ Store:
 import pickle
 
 with open("example.pickle", "wb") as fp:
-        pickle.load(run_metadata, fp)
+        pickle.dump(run_metadata, fp)
 ```
 
 Load and Visualize:
